@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 420" width="750" height="420">
+  <rect width="750" height="420" fill="#fafafa" rx="8"/>
+  <text x="375" y="30" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#1a237e">Data Flow Diagram</text>
+  <text x="375" y="50" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#666">Simple overview of how data moves through the system</text>
+
+  <!-- FACULTY -->
+  <rect x="40" y="100" width="160" height="60" rx="12" fill="#fff3e0" stroke="#e65100" stroke-width="2.5"/>
+  <text x="120" y="125" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#e65100">👤 FACULTY</text>
+  <text x="120" y="145" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#888">(Professor)</text>
+
+  <!-- Arrow Faculty → System -->
+  <line x1="200" y1="115" x2="290" y2="115" stroke="#555" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="245" y="108" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">Login, Browse, Borrow</text>
+
+  <!-- Arrow System → Faculty -->
+  <line x1="290" y1="145" x2="200" y2="145" stroke="#1a237e" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="245" y="165" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1a237e">Dashboard, Notifications</text>
+
+  <!-- SYSTEM BOX -->
+  <rect x="300" y="85" width="200" height="90" rx="14" fill="#e8eaf6" stroke="#1a237e" stroke-width="2.5"/>
+  <text x="400" y="115" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1a237e">MIS SYSTEM</text>
+  <text x="400" y="138" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#555">Web Application</text>
+  <text x="400" y="155" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#888">Laravel + MySQL</text>
+
+  <!-- Arrow System → DB -->
+  <line x1="500" y1="115" x2="585" y2="115" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#arrG)"/>
+  <text x="542" y="108" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#2e7d32">Read/Write</text>
+
+  <!-- Arrow DB → System -->
+  <line x1="585" y1="140" x2="500" y2="140" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#arrG)"/>
+  <text x="542" y="158" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#2e7d32">Return Data</text>
+
+  <!-- DB BOX -->
+  <rect x="595" y="95" width="130" height="55" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+  <text x="660" y="120" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2e7d32">DATABASE</text>
+  <text x="660" y="138" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">MySQL</text>
+
+  <!-- ADMIN -->
+  <rect x="40" y="260" width="160" height="60" rx="12" fill="#fff3e0" stroke="#e65100" stroke-width="2.5"/>
+  <text x="120" y="285" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#e65100">👤 ADMIN</text>
+  <text x="120" y="305" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#888">(Administrator)</text>
+
+  <!-- Arrow Admin → System -->
+  <line x1="200" y1="275" x2="290" y2="275" stroke="#555" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="245" y="268" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">Approve, Reject, Export</text>
+
+  <!-- Arrow System → Admin -->
+  <line x1="290" y1="305" x2="200" y2="305" stroke="#1a237e" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="245" y="325" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1a237e">Overdue Alerts, Reports</text>
+
+  <!-- WHAT FLOWS SECTION -->
+  <rect x="300" y="240" width="310" height="120" rx="10" fill="white" stroke="#ddd" stroke-width="1.5"/>
+  <text x="455" y="265" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#333">What data flows?</text>
+  <text x="320" y="288" font-family="sans-serif" font-size="11" fill="#444">📝 Login credentials, borrow requests</text>
+  <text x="320" y="306" font-family="sans-serif" font-size="11" fill="#444">📋 Resource lists, availability status</text>
+  <text x="320" y="324" font-family="sans-serif" font-size="11" fill="#444">🔔 Approvals, rejections, notifications</text>
+  <text x="320" y="342" font-family="sans-serif" font-size="11" fill="#444">📊 Overdue alerts, CSV reports</text>
+
+  <!-- ARROW DEFINITIONS -->
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#555"/></marker>
+    <marker id="arrG" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2e7d32"/></marker>
+  </defs>
+</svg>

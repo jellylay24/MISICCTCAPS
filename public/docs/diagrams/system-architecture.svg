@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="clientGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#667eea;stop-opacity:1" /><stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" /></linearGradient>
+    <linearGradient id="appGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1a237e;stop-opacity:1" /><stop offset="100%" style="stop-color:#283593;stop-opacity:1" /></linearGradient>
+    <linearGradient id="dataGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2e7d32;stop-opacity:1" /><stop offset="100%" style="stop-color:#388e3c;stop-opacity:1" /></linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="#f5f5f5" rx="10"/>
+
+  <!-- Title -->
+  <text x="400" y="35" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="bold" fill="#333">System Architecture — Three-Tier</text>
+
+  <!-- CLIENT TIER -->
+  <rect x="50" y="60" width="700" height="130" rx="12" fill="#e8eaf6" stroke="#667eea" stroke-width="2"/>
+  <rect x="50" y="60" width="700" height="35" rx="12" fill="url(#clientGrad)"/>
+  <rect x="50" y="83" width="700" height="12" fill="url(#clientGrad)"/>
+  <text x="400" y="83" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="white">PRESENTATION TIER (Client)</text>
+
+  <rect x="100" y="110" width="250" height="60" rx="8" fill="white" stroke="#667eea" stroke-width="1.5"/>
+  <text x="225" y="135" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#444">Web Browser</text>
+  <text x="225" y="155" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#888">Desktop · Tablet · Mobile</text>
+
+  <rect x="420" y="110" width="280" height="60" rx="8" fill="white" stroke="#667eea" stroke-width="1.5"/>
+  <text x="560" y="135" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#444">Frontend Technologies</text>
+  <text x="560" y="155" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#888">Tailwind CSS · Alpine.js · Vite</text>
+
+  <!-- Arrow 1 -->
+  <defs><marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#1a237e"/></marker></defs>
+  <line x1="400" y1="190" x2="400" y2="240" stroke="#1a237e" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <text x="415" y="218" font-family="sans-serif" font-size="11" fill="#1a237e">HTTPS / HTTP</text>
+
+  <!-- APPLICATION TIER -->
+  <rect x="50" y="245" width="700" height="180" rx="12" fill="#e3f2fd" stroke="#1a237e" stroke-width="2"/>
+  <rect x="50" y="245" width="700" height="35" rx="12" fill="url(#appGrad)"/>
+  <rect x="50" y="268" width="700" height="12" fill="url(#appGrad)"/>
+  <text x="400" y="268" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="white">APPLICATION TIER — Laravel 11</text>
+
+  <rect x="80" y="295" width="150" height="50" rx="6" fill="white" stroke="#1a237e" stroke-width="1.5"/>
+  <text x="155" y="318" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#444">Apache 2.4</text>
+  <text x="155" y="335" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#888">Web Server</text>
+
+  <rect x="260" y="295" width="150" height="50" rx="6" fill="white" stroke="#1a237e" stroke-width="1.5"/>
+  <text x="335" y="318" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#444">Laravel Routes</text>
+  <text x="335" y="335" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#888">web.php / api.php</text>
+
+  <rect x="440" y="295" width="150" height="50" rx="6" fill="white" stroke="#1a237e" stroke-width="1.5"/>
+  <text x="515" y="318" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#444">Controllers</text>
+  <text x="515" y="335" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#888">Auth/Admin/Faculty</text>
+
+  <rect x="620" y="295" width="100" height="50" rx="6" fill="white" stroke="#1a237e" stroke-width="1.5"/>
+  <text x="670" y="318" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#444">Middleware</text>
+  <text x="670" y="335" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#888">Role/Auth</text>
+
+  <rect x="180" y="360" width="420" height="45" rx="6" fill="white" stroke="#1a237e" stroke-width="1.5"/>
+  <text x="390" y="382" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#444">Blade Views · Vite Assets · Tailwind CSS</text>
+  <text x="390" y="397" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#888">Server-side rendering with compiled assets</text>
+
+  <!-- Arrow 2 -->
+  <line x1="400" y1="425" x2="400" y2="475" stroke="#2e7d32" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+  <!-- DATA TIER -->
+  <rect x="50" y="480" width="700" height="105" rx="12" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <rect x="50" y="480" width="700" height="35" rx="12" fill="url(#dataGrad)"/>
+  <rect x="50" y="503" width="700" height="12" fill="url(#dataGrad)"/>
+  <text x="400" y="503" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="white">DATA TIER</text>
+
+  <rect x="100" y="530" width="250" height="40" rx="6" fill="white" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="225" y="550" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#444">MySQL Database</text>
+  <text x="225" y="563" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#888">icct_mis_db</text>
+
+  <rect x="420" y="530" width="250" height="40" rx="6" fill="white" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="545" y="550" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#444">Brevo SMTP</text>
+  <text x="545" y="563" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#888">Email Verification</text>
+</svg>

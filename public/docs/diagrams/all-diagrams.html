@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>ICCT MIS - System Diagrams</title>
+<style>
+body{font-family:'Segoe UI',Arial,sans-serif;max-width:1000px;margin:0 auto;padding:40px 20px;background:#fff;color:#222}
+h1{color:#1a237e;text-align:center;font-size:24px;margin-bottom:5px}
+.subtitle{text-align:center;color:#666;margin-bottom:30px}
+.diagram-section{margin:40px 0;page-break-inside:avoid}
+.diagram-section h2{color:#1a237e;font-size:20px;border-left:4px solid #1a237e;padding-left:12px;margin-bottom:10px}
+.desc{background:#f5f5f5;padding:12px 16px;border-radius:8px;margin:10px 0 20px 0;font-size:14px;color:#444;line-height:1.6;border-left:3px solid #1a237e}
+.desc strong{color:#1a237e}
+.diagram-img{text-align:center;margin:15px 0;background:white;padding:15px;border:1px solid #eee;border-radius:10px}
+.diagram-img img{max-width:100%;height:auto}
+.page-break{page-break-before:always}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}
+th,td{border:1px solid #ccc;padding:6px 10px;text-align:left}
+th{background:#1a237e;color:white}
+</style></head>
+<body>
+
+<h1>ICCT Cainta Campus — MIS Resource Management System</h1>
+<p class="subtitle">System Diagrams and Descriptions</p>
+
+<!-- ============================================ -->
+<!-- SYSTEM ARCHITECTURE -->
+<!-- ============================================ -->
+<div class="page-break"></div>
+<div class="diagram-section">
+<h2>1. System Architecture Diagram</h2>
+
+<div class="desc">
+<strong>Description:</strong> The system follows a <strong>three-tier architecture</strong>. The <strong>Presentation Tier</strong> consists of the client web browser running Tailwind CSS and Alpine.js for responsive design on desktop, tablet, and mobile devices. The <strong>Application Tier</strong> runs Laravel 11 on Apache with MVC architecture — handling routing, business logic, authentication, and server-side rendering. The <strong>Data Tier</strong> uses MySQL database for storing all system data and Brevo SMTP for email verification services. Communication between tiers uses HTTPS for security.
+</div>
+
+<div class="diagram-img">
+<img src="https://icct-mis.classapparelph.com/docs/diagrams/system-architecture.svg" alt="System Architecture" style="width:100%;max-width:750px;">
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- DATA FLOW DIAGRAM -->
+<!-- ============================================ -->
+<div class="page-break"></div>
+<div class="diagram-section">
+<h2>2. Data Flow Diagram (DFD Level 0)</h2>
+
+<div class="desc">
+<strong>Description:</strong> The DFD shows how data flows between external entities (<strong>Faculty User</strong> and <strong>Administrator</strong>) and the <strong>MIS System</strong>. The system is composed of six modules: (1) Authentication handles login and registration, (2) Resources manages resource browsing and availability display, (3) Borrow Manager processes borrowing requests with duration selection, (4) Approval enables administrators to approve/reject requests and mark items returned, (5) Notifications sends in-app alerts, and (6) Reports generates CSV exports. All modules read from and write to the <strong>MySQL Database</strong>. The <strong>Brevo Email Service</strong> is used for email verification.
+</div>
+
+<div class="diagram-img">
+<img src="https://icct-mis.classapparelph.com/docs/diagrams/data-flow.svg" alt="Data Flow Diagram" style="width:100%;max-width:750px;">
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- FLOWCHART -->
+<!-- ============================================ -->
+<div class="page-break"></div>
+<div class="diagram-section">
+<h2>3. Borrow Process Flowchart</h2>
+
+<div class="desc">
+<strong>Description:</strong> The flowchart illustrates the complete borrowing process from login to return. A faculty member logs in, browses available resources, and selects a borrowing duration (1 hour, 2 hours, 3 hours, or custom). If the resource is available, the system creates a pending request. The administrator reviews and either approves or rejects the request with a reason. Once approved, the item becomes active with a real-time countdown timer showing remaining time. The system automatically detects overdue items and displays a red alert banner. The process ends when the item is returned and marked as completed.
+</div>
+
+<div class="diagram-img">
+<img src="https://icct-mis.classapparelph.com/docs/diagrams/flowchart.svg" alt="Flowchart" style="width:100%;max-width:500px;">
+</div>
+</div>
+
+<!-- ============================================ -->
+<!-- APPENDIX: FEATURES SUMMARY -->
+<!-- ============================================ -->
+<div class="page-break"></div>
+<div class="diagram-section">
+<div class="page-break"></div>
+<div class="diagram-section">
+<h2>4. IPO Chart</h2>
+<div class="diagram-img">
+<img src="https://icct-mis.classapparelph.com/docs/diagrams/ipo.svg" alt="IPO" style="width:100%;max-width:750px;">
+</div>
+</div>
+
+<div class="page-break"></div>
+<div class="diagram-section">
+<h2>5. Agile SDLC Model</h2>
+
+<div class="desc">
+<strong>Description:</strong> The system followed an <strong>Agile/Iterative SDLC</strong> approach. Each phase (Planning, Analysis, Design, Development, Testing) was completed in cycles, with continuous feedback from stakeholders driving improvements. Deployment was done after each stable iteration, and maintenance continues based on user feedback.
+</div>
+
+<div class="diagram-img">
+<img src="https://icct-mis.classapparelph.com/docs/diagrams/sdlc.svg" alt="SDLC" style="width:100%;max-width:650px;">
+</div>
+</div>
+
+<div class="page-break"></div>
+<div class="diagram-section">
+<h2>Appendix: Implemented Features Summary</h2>
+
+<table>
+<tr><th>#</th><th>Feature</th><th>Description</th><th>User</th></tr>
+<tr><td>1</td><td>Authentication</td><td>Login/Register with email verification via Brevo, password recovery</td><td>All</td></tr>
+<tr><td>2</td><td>Role-Based Access</td><td>Admin and Faculty roles with different dashboards and permissions</td><td>All</td></tr>
+<tr><td>3</td><td>Resource Management</td><td>CRUD operations, auto-calculated availability, responsive views</td><td>Admin</td></tr>
+<tr><td>4</td><td>Borrow Request</td><td>Digital submission with duration select (1h/2h/3h/custom HH:MM)</td><td>Faculty</td></tr>
+<tr><td>5</td><td>Approval Workflow</td><td>Approve/Reject with reason, auto-notification, mark returned</td><td>Admin</td></tr>
+<tr><td>6</td><td>Dashboard</td><td>Welcome overview, stats cards, overdue alert banner, weekly chart</td><td>All</td></tr>
+<tr><td>7</td><td>Notifications</td><td>In-app with red badge, delete/clear, mark all read</td><td>All</td></tr>
+<tr><td>8</td><td>Overdue Monitoring</td><td>Cron job, color-coded countdown, red alert banner with item details</td><td>All</td></tr>
+<tr><td>9</td><td>Borrow History</td><td>Filter tabs (All/Pending/Approved/Borrowed/Returned/Rejected)</td><td>Faculty</td></tr>
+<tr><td>10</td><td>CSV Export</td><td>Downloadable report of all borrow records</td><td>Admin</td></tr>
+<tr><td>11</td><td>Mobile Responsive</td><td>Phone (cards), Tablet (compact), Laptop (full) layouts</td><td>All</td></tr>
+<tr><td>12</td><td>Overdue Alert Banner</td><td>Red banner on dashboard listing overdue items with due dates</td><td>Faculty</td></tr>
+</table>
+</div>
+
+</body></html>

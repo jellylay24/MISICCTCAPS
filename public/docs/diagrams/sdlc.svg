@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 480" width="450" height="480">
+  <rect width="450" height="480" fill="#ffffff" rx="8"/>
+  <text x="225" y="35" text-anchor="middle" font-family="sans-serif" font-size="18" font-weight="bold" fill="#1a237e">Agile SDLC Model</text>
+  <text x="225" y="55" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#666">ICCT MIS System</text>
+
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#1a237e"/></marker>
+    <marker id="arrF" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#c62828"/></marker>
+  </defs>
+
+  <!-- SIMPLE CIRCULAR LAYOUT -->
+
+  <!-- 1. Planning - Top -->
+  <rect x="100" y="80" width="250" height="40" rx="20" fill="#e8eaf6" stroke="#1a237e" stroke-width="2"/>
+  <text x="225" y="100" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1a237e">1. Planning</text>
+  <text x="225" y="115" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Set goals</text>
+
+  <!-- Arrow down -->
+  <line x1="225" y1="120" x2="225" y2="150" stroke="#1a237e" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 2. Analysis + 3. Design - Middle Row -->
+  <rect x="15" y="155" width="190" height="40" rx="20" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+  <text x="110" y="175" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1565c0">2. Analysis &amp; Design</text>
+  <text x="110" y="190" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Requirements + UI/DB</text>
+
+  <rect x="245" y="155" width="190" height="40" rx="20" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="340" y="175" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2e7d32">3. Development</text>
+  <text x="340" y="190" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Code features</text>
+
+  <line x1="205" y1="175" x2="243" y2="175" stroke="#1a237e" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Arrow down from Analysis to Testing -->
+  <line x1="110" y1="195" x2="110" y2="235" stroke="#c62828" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 4. Testing - Bottom Left -->
+  <rect x="15" y="240" width="190" height="40" rx="20" fill="#fce4ec" stroke="#c62828" stroke-width="2"/>
+  <text x="110" y="260" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#c62828">4. Testing</text>
+  <text x="110" y="275" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Feedback &amp; fixes</text>
+
+  <!-- Arrow from Dev to Testing -->
+  <path d="M 340 195 Q 340 220 200 250" fill="none" stroke="#2e7d32" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 5. Deployment - Bottom Right -->
+  <rect x="245" y="240" width="190" height="40" rx="20" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+  <text x="340" y="260" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#7b1fa2">5. Deployment</text>
+  <text x="340" y="275" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#666">Go live</text>
+
+  <line x1="205" y1="260" x2="243" y2="260" stroke="#7b1fa2" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 6. Maintenance - Bottom -->
+  <rect x="100" y="325" width="250" height="40" rx="20" fill="#f5f5f5" stroke="#888" stroke-width="2"/>
+  <text x="225" y="345" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#666">6. Maintenance</text>
+  <text x="225" y="360" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#888">Updates &amp; improvements</text>
+
+  <line x1="110" y1="280" x2="110" y2="310" stroke="#c62828" stroke-width="1.5"/>
+  <line x1="110" y1="310" x2="225" y2="325" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <line x1="340" y1="280" x2="340" y2="310" stroke="#7b1fa2" stroke-width="1.5"/>
+  <line x1="340" y1="310" x2="225" y2="325" stroke="#888" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- FEEDBACK ARROW - Testing back to Planning -->
+  <path d="M 15 260 Q -15 260 -15 100 Q -15 80 98 100" fill="none" stroke="#c62828" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrF)"/>
+  <text x="5" y="180" font-family="sans-serif" font-size="9" fill="#c62828">Feedback</text>
+
+  <!-- ITERATION ARROW - Maintenance to Planning -->
+  <path d="M 350 345 Q 440 345 440 100 Q 440 80 352 100" fill="none" stroke="#1a237e" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arr)"/>
+  <text x="444" y="220" font-family="sans-serif" font-size="9" fill="#1a237e">Next Sprint</text>
+
+  <!-- Simple cycle indicator -->
+  <path d="M 225 365 Q 225 395 225 400" fill="none" stroke="#ddd" stroke-width="1"/>
+</svg>

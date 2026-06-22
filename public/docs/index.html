@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICCT MIS - Documentation</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 20px; background: #f8f9fa; color: #333; line-height: 1.6; }
+        h1 { color: #1a237e; border-bottom: 3px solid #1a237e; padding-bottom: 10px; }
+        h2 { color: #283593; margin-top: 30px; }
+        h3 { color: #3949ab; }
+        .card { background: white; border-radius: 12px; padding: 20px; margin: 15px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; margin: 2px; }
+        .badge-green { background: #e8f5e9; color: #2e7d32; }
+        .badge-blue { background: #e3f2fd; color: #1565c0; }
+        .badge-amber { background: #fff8e1; color: #f57f17; }
+        .qr-grid { display: flex; gap: 20px; flex-wrap: wrap; }
+        .qr-item { text-align: center; background: white; padding: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .qr-item img { width: 150px; height: 150px; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #e0e0e0; }
+        th { background: #1a237e; color: white; }
+        .diagram { background: white; padding: 20px; border-radius: 12px; margin: 15px 0; overflow-x: auto; }
+        .diagram pre { font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.4; }
+        .download-btn { display: inline-block; padding: 10px 20px; background: #1a237e; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin: 5px; }
+        .download-btn:hover { background: #283593; }
+    </style>
+</head>
+<body>
+    <h1>📄 ICCT MIS — Revised Documentation</h1>
+    <p style="color: #666;">Web-Based Resource Borrowing and Returning System for MIS Faculty at ICCT Cainta Campus</p>
+    <p><a href="https://icct-mis.classapparelph.com" target="_blank">🔗 https://icct-mis.classapparelph.com</a></p>
+
+    <div class="card">
+        <h2>📥 Download Files</h2>
+        <a href="ICCT_MIS_Revised_Documentation.md" class="download-btn" download>📄 Download Full Documentation (.md)</a>
+        <a href="ICCT_MIS_Diagrams.md" class="download-btn" download>📊 Download Diagrams (.md)</a>
+        <a href="mis-website.png" class="download-btn" download>🏠 Download Website QR</a>
+        <a href="mis-login.png" class="download-btn" download>🔐 Download Login QR</a>
+        <a href="mis-resources.png" class="download-btn" download>📦 Download Resources QR</a>
+    </div>
+
+    <div class="card">
+        <h2>📱 QR Codes</h2>
+        <div class="qr-grid">
+            <div class="qr-item">
+                <img src="mis-website.png" alt="Website QR">
+                <p><strong>🏠 Main Website</strong></p>
+                <small>icct-mis.classapparelph.com</small>
+            </div>
+            <div class="qr-item">
+                <img src="mis-login.png" alt="Login QR">
+                <p><strong>🔐 Login Page</strong></p>
+                <small>/login</small>
+            </div>
+            <div class="qr-item">
+                <img src="mis-resources.png" alt="Resources QR">
+                <p><strong>📦 Resources</strong></p>
+                <small>/faculty/resources</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>✅ Alignment Check: Website vs Documentation</h2>
+        <table>
+            <tr><th>Feature</th><th>Status</th></tr>
+            <tr><td>QR Code + Direct URL Access</td><td><span class="badge badge-green">✅ Aligned</span></td></tr>
+            <tr><td>Real-Time Resource Display</td><td><span class="badge badge-green">✅ Aligned</span></td></tr>
+            <tr><td>Digital Borrow Request (Duration-Based)</td><td><span class="badge badge-green">✅ Aligned</span></td></tr>
+            <tr><td>Admin Approve/Reject Workflow</td><td><span class="badge badge-green">✅ Aligned</span></td></tr>
+            <tr><td>Overdue Monitoring + Countdown Timer</td><td><span class="badge badge-green">✅ Aligned</span></td></tr>
+            <tr><td>In-App Notifications + Badge</td><td><span class="badge badge-green">✅ Aligned</span></td></tr>
+            <tr><td>CSV Export Reports</td><td><span class="badge badge-green">✅ Aligned</span></td></tr>
+            <tr><td>Mobile Responsive Design</td><td><span class="badge badge-green">✅ Aligned</span></td></tr>
+            <tr><td>Borrow History with Filter Tabs</td><td><span class="badge badge-green">✅ Aligned</span></td></tr>
+            <tr><td>Email Verification (Brevo)</td><td><span class="badge badge-green">✅ Aligned</span></td></tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>🏗️ System Architecture</h2>
+        <div class="diagram">
+            <pre>
+    ┌─────────────────────────────────────────────────────┐
+    │                  CLIENT LAYER                        │
+    │         Web Browser (Desktop/Tablet/Mobile)          │
+    │          Tailwind CSS + Alpine.js                    │
+    └────────────────────┬────────────────────────────────┘
+                         │ HTTPS
+    ┌────────────────────▼────────────────────────────────┐
+    │              APPLICATION LAYER (Laravel 11)          │
+    │  ┌──────────┐  ┌──────────┐  ┌───────────────────┐  │
+    │  │ Apache   │  │ Routes   │  │ Controllers       │  │
+    │  │ Web Srv  │──►│ web/api  │──►│ Auth/Admin/Faculty│  │
+    │  └──────────┘  └──────────┘  └─────────┬─────────┘  │
+    │  ┌─────────────────────────────────────▼─────────┐  │
+    │  │         Blade Views + Vite Assets              │  │
+    │  └───────────────────────────────────────────────┘  │
+    └────────────────────┬────────────────────────────────┘
+                         │
+    ┌────────────────────▼────────────────────────────────┐
+    │                DATA LAYER                            │
+    │  ┌─────────────────┐    ┌───────────────────────┐   │
+    │  │  MySQL Database  │    │  Brevo SMTP (Email)   │   │
+    │  │  (icct_mis_db)   │    │  (Verification Only)  │   │
+    │  └─────────────────┘    └───────────────────────┘   │
+    └─────────────────────────────────────────────────────┘
+            </pre>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📋 Borrow Process Flowchart</h2>
+        <div class="diagram">
+            <pre>
+    ┌──────────┐
+    │  Faculty  │──► Login (Email/Password)
+    │  Logs In  │
+    └──────────┘
+         │
+         ▼
+    ┌────────────────┐
+    │ Browse Resources│
+    │ (Check Avail.)  │
+    └────────┬───────┘
+             │
+    ┌────────▼───────┐       ┌──────────────┐
+    │ Available?     ├──No──►│ Cannot Borrow │
+    └────────┬───────┘       └──────────────┘
+             │ Yes
+             ▼
+    ┌────────────────┐
+    │ Select Duration │
+    │ 1h / 2h / 3h    │
+    │ or Custom (3:30)│
+    └────────┬───────┘
+             │
+    ┌────────▼───────┐
+    │ Submit Request  │
+    │ Status: Pending │
+    └────────┬───────┘
+             │
+    ┌────────▼───────┐
+    │ Admin Approves? │
+    └──┬──────────┬──┘
+       │ Yes      │ No
+       ▼          ▼
+    ┌──────┐  ┌────────┐
+    │Approved│  │Rejected │
+    │Active  │  │+ Reason │
+    └───┬───┘  └────────┘
+        │
+    ┌───▼──────────────┐
+    │ Countdown Timer   │
+    │ Due Date Tracking │
+    └───┬──────────────┘
+        │
+    ┌───▼────┐     ┌─────────┐
+    │ Overdue?├──► │Red Banner│
+    └───┬────┘     │+ Notif   │
+        │ No       └─────────┘
+        │
+    ┌───▼──────────┐
+    │ Item Returned │
+    │ Status: Done  │
+    └──────────────┘
+            </pre>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🗃️ Entity Relationship Diagram (ERD)</h2>
+        <div class="diagram">
+            <pre>
+    ┌──────────────┐       ┌──────────────────┐
+    │    USERS     │       │    RESOURCES      │
+    ├──────────────┤       ├──────────────────┤
+    │ id (PK)      │       │ id (PK)           │
+    │ name         │       │ name              │
+    │ email        │       │ description       │
+    │ password     │       │ quantity          │
+    │ role         │       │ is_available      │
+    │ department   │       │ created_at        │
+    │ created_at   │       └────────┬─────────┘
+    └──────┬───────┘                │
+           │ 1                      │ 1
+           │                        │
+           │ *                      │ *
+           ▼                        ▼
+    ┌───────────────────────────────────────┐
+    │              BORROWS                   │
+    ├───────────────────────────────────────┤
+    │ id (PK)                               │
+    │ user_id (FK) ───────────────────┐     │
+    │ resource_id (FK) ───────────────┘     │
+    │ quantity                              │
+    │ status (pending/approved/borrowed/    │
+    │         returned/rejected)            │
+    │ borrowed_at                           │
+    │ due_at                                │
+    │ returned_at                           │
+    │ notes                                 │
+    │ created_at                            │
+    └───────────────────────────────────────┘
+
+    ┌───────────────────────┐
+    │     NOTIFICATIONS      │
+    ├───────────────────────┤
+    │ id (PK)               │
+    │ user_id (FK) ─────────┼──► USERS.id
+    │ title                 │
+    │ message               │
+    │ is_read               │
+    │ created_at            │
+    └───────────────────────┘
+            </pre>
+        </div>
+    </div>
+
+    <footer style="text-align: center; margin-top: 40px; color: #999; font-size: 14px;">
+        <p>ICCT Cainta Campus — MIS Resource Management System</p>
+        <p>© 2026</p>
+    </footer>
+</body>
+</html>

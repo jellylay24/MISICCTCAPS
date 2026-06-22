@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ICCT MIS Diagrams</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #fff; color: #333; }
+        h2 { border-bottom: 2px solid #333; padding-bottom: 5px; margin-top: 30px; }
+        .mermaid { margin: 20px 0; text-align: center; }
+        .page-break { page-break-after: always; }
+        .title-page { text-align: center; padding-top: 150px; }
+        .title-page h1 { font-size: 28px; }
+        .title-page p { font-size: 16px; color: #555; }
+    </style>
+</head>
+<body>
+    <div class="title-page">
+        <h1>ICCT MIS System Diagrams</h1>
+        <p>Web-Based Resource Borrowing and Returning System</p>
+        <p>ICCT Cainta Campus — MIS Department</p>
+        <p>Revised: May 23, 2026</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Figure 1 — System Architecture Diagram</h2>
+    <p>The system follows a three-tier architecture supporting both web and mobile clients, with a Laravel 11 backend, MySQL database, Brevo email service, and cron-based task scheduling.</p>
+    <div class="mermaid">
+    graph TB
+        subgraph "Client Layer"
+            A[Web Browser<br/>Desktop/Tablet/Mobile]
+            M[Mobile App<br/>Flutter - Future]
+        end
+
+        subgraph "API Layer - Laravel Sanctum"
+            API[REST API<br/>Token Authentication]
+        end
+
+        subgraph "Application Layer - Laravel 11"
+            B[Web Server<br/>Apache 2.4]
+            C[Laravel Routes<br/>Web + API]
+            D[Controllers<br/>Auth / Admin / Faculty / API]
+            E[Blade Views<br/>Tailwind CSS + Alpine.js]
+            F[Middleware<br/>Auth / Role-based / Sanctum]
+            SCHED[Cron Scheduler<br/>borrows:check-due]
+        end
+
+        subgraph "Data & Service Layer"
+            G[(MySQL Database<br/>icct_mis_db)]
+            H[Brevo SMTP<br/>Email Verification & Password Reset]
+        end
+
+        A -->|HTTPS| B
+        M -->|HTTPS JSON| API
+        API --> C
+        B --> C
+        C --> F
+        F --> D
+        D --> E
+        D --> G
+        D --> H
+        G --> D
+        SCHED -->|Every Minute| G
+        SCHED -->|Due Alerts| D
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Figure 2 — Entity Relationship Diagram (ERD)</h2>
+    <p>The database consists of 6 tables: users, resources, borrows, notifications, settings, and personal_access_tokens (Sanctum). The borrows table includes room and duration fields for tracking.</p>
+    <div class="mermaid">
+    erDiagram
+        USERS ||--o{ BORROWS : "borrows"
+        USERS ||--o{ NOTIFICATIONS : "receives"
+        USERS ||--o{ PERSONAL_ACCESS_TOKENS : "has"
+        RESOURCES ||--o{ BORROWS : "has"
+
+        USERS {
+            int id PK
+            string name
+            string email
+            string password
+            string role "admin | faculty"
+            datetime email_verified_at
+            timestamp created_at
+            timestamp updated_at
+        }
+
+        RESOURCES {
+            int id PK
+            string name
+            string description
+            int total_quantity
+            int available_quantity
+            string status "available | unavailable"
+            timestamp created_at
+            timestamp updated_at
+        }
+
+        BORROWS {
+            int id PK
+            int user_id FK
+            int resource_id FK
+            int quantity
+            int duration "duration in minutes"
+            string room "location/building/room"
+            datetime due_at
+            string status "pending | approved | rejected | returned"
+            text notes
+            text admin_notes
+            datetime approved_at
+            datetime returned_at
+            timestamp created_at
+            timestamp updated_at
+        }
+
+        NOTIFICATIONS {
+            int id PK
+            int user_id FK
+            string title
+            text message
+            string type "info | due | overdue | approved | rejected"
+            boolean is_read
+            timestamp created_at
+            timestamp updated_at
+        }
+
+        SETTINGS {
+            int id PK
+            string key UK
+            text value
+            timestamp created_at
+            timestamp updated_at
+        }
+
+        PERSONAL_ACCESS_TOKENS {
+            int id PK
+            int tokenable_id FK
+            string name
+            string token UK
+            text abilities
+            timestamp last_used_at
+            timestamp created_at
+            timestamp updated_at
+        }
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Figure 3 — Borrow Process Flowchart</h2>
+    <p>The borrowing workflow shows the complete process from login through return. Includes room designation step and automated cron-based overdue detection.</p>
+    <div class="mermaid">
+    flowchart TD
+        START([Faculty Logs In]) --> BROWSE[Browse Resources]
+        BROWSE --> CHECK{Resource<br/>Available?}
+        CHECK -->|Yes| FORM[Select Quantity & Duration<br/>1h / 2h / 3h / Custom]
+        CHECK -->|No| END1([Cannot Borrow])
+        FORM --> ROOM[Enter Room / Location]
+        ROOM --> SUBMIT[Submit Borrow Request]
+        SUBMIT --> PENDING{Status: Pending}
+        PENDING --> NOTIF_ADMIN[Notification Sent to Admin]
+        NOTIF_ADMIN --> APPROVE{Admin Approves?}
+        APPROVE -->|Yes| STATUS_APPROVED[Status: Approved<br/>Borrower Notified]
+        APPROVE -->|No| STATUS_REJECTED[Status: Rejected<br/>Reason Provided]
+        STATUS_REJECTED --> END2([End])
+        STATUS_APPROVED --> DASHBOARD[Item Listed as Active<br/>Countdown Timer Starts]
+        DASHBOARD --> CRON_MONITOR[Cron Job Runs Every Minute<br/>borrows:check-due]
+        CRON_MONITOR --> DUE_NOW{Due Now or<br/>Overdue?}
+        DUE_NOW -->|No - Still Active| COUNTDOWN[Countdown Active]
+        COUNTDOWN --> CRON_MONITOR
+        DUE_NOW -->|Yes| OVERDUE[Red Overdue Alert Banner<br/>+ Notification Sent]
+        OVERDUE --> RETURN{Item Returned?}
+        RETURN -->|Yes| STATUS_RETURNED[Status: Returned<br/>Timestamp Recorded]
+        RETURN -->|No| OVERDUE
+        STATUS_RETURNED --> END3([End])
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Figure 4 — Use Case Diagram</h2>
+    <p>System functionality is divided between two user roles: Faculty and Administrator. Faculty can register, login, browse resources, submit borrow requests with room designation, and view history. Administrators have full management capabilities.</p>
+    <div class="mermaid">
+    graph TB
+        subgraph "ICCT MIS System"
+            UC1[Login / Register]
+            UC2[Browse Resources]
+            UC3[Submit Borrow Request<br/>with Room Designation]
+            UC4[View Borrow History]
+            UC5[View Dashboard]
+            UC6[Receive Notifications]
+            UC7[Approve/Reject Requests]
+            UC8[Mark Items as Returned]
+            UC9[Manage Resources CRUD]
+            UC10[Manage Users]
+            UC11[Export CSV Reports]
+            UC12[Manage Settings]
+            UC13[API Access<br/>Mobile App Integration]
+        end
+
+        FAC[Faculty User] --- UC1
+        FAC --- UC2
+        FAC --- UC3
+        FAC --- UC4
+        FAC --- UC5
+        FAC --- UC6
+
+        ADM[Administrator] --- UC1
+        ADM --- UC2
+        ADM --- UC5
+        ADM --- UC6
+        ADM --- UC7
+        ADM --- UC8
+        ADM --- UC9
+        ADM --- UC10
+        ADM --- UC11
+        ADM --- UC12
+        ADM --- UC13
+
+        MOBILE[Mobile App / API Client] --- UC13
+    </div>
+
+    <div class="page-break"></div>
+
+    <h2>Figure 5 — Data Flow Diagram (DFD Level 0)</h2>
+    <p>The data flow diagram shows how Faculty, Administrator, and Mobile App interact with system modules including the new API Gateway, Settings Manager, and Cron Monitoring modules.</p>
+    <div class="mermaid">
+    flowchart LR
+        subgraph "External Entities"
+            FAC[Faculty User]
+            ADM[Administrator]
+            MOB[Mobile App Client]
+        end
+
+        subgraph "System"
+            AUTH[Authentication Module]
+            API_GW[API Gateway<br/>Sanctum Tokens]
+            RES[Resource Manager]
+            BOR[Borrow Manager]
+            ROOM[Room / Location Tracker]
+            NOTIF[Notification Manager]
+            SETTINGS[Settings Manager]
+            CRON[Cron Monitoring<br/>borrows:check-due]
+            REPORT[Report Generator]
+            DB[(MySQL Database)]
+            EMAIL[Brevo Email Service]
+        end
+
+        FAC -->|Login Credentials| AUTH
+        AUTH -->|Session| FAC
+        MOB -->|API Token| API_GW
+        API_GW --> AUTH
+        FAC -->|Browse| RES
+        MOB -->|Browse| API_GW
+        API_GW --> RES
+        RES -->|Resource List| FAC
+        RES -->|Resource List| MOB
+        FAC -->|Submit Borrow| BOR
+        MOB -->|Submit Borrow| API_GW
+        API_GW --> BOR
+        BOR -->|Room Info| ROOM
+        BOR -->|Request| ADM
+        ADM -->|Approve/Reject| BOR
+        BOR -->|Status Update| NOTIF
+        NOTIF -->|Alert| FAC
+        NOTIF -->|Alert| ADM
+        NOTIF -->|Alert| MOB
+        ADM -->|Manage| SETTINGS
+        SETTINGS -->|Config| CRON
+        CRON -->|Check Due/Overdue| BOR
+        CRON -->|Trigger| NOTIF
+        ADM -->|Export| REPORT
+        REPORT -->|CSV| ADM
+        AUTH <--> DB
+        RES <--> DB
+        BOR <--> DB
+        ROOM <--> DB
+        NOTIF <--> DB
+        SETTINGS <--> DB
+        EMAIL -->|Verification & Reset| FAC
+    </div>
+
+</body>
+</html>

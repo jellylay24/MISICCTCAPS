@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ICCT MIS Documentation</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">ICCT MIS Documentation</h1>
+</header>
+<h1 id="fully-revised-documentation">FULLY REVISED DOCUMENTATION</h1>
+<h2 id="based-on-the-deployed-icct-mis-website">Based on the Deployed
+ICCT MIS Website</h2>
+<h3 id="httpsicct-mis.classapparelph.com">https://icct-mis.classapparelph.com</h3>
+<hr />
+<h2 id="title">Title</h2>
+<p><strong>Web-Based Resource Borrowing and Returning System with
+Availability Tracking and Faculty Authentication for MIS Faculty at ICCT
+Cainta Campus</strong></p>
+<p><strong>Authors:</strong> Angelica Padil, Bryan Soliven, Richard
+Erenea, Ronjay Pulido, John Harold Uvero, Mikaela Montealto, Melody
+Rances, Arlyn Cenidoza, Grace Joy Flores</p>
+<p><strong>Department of Computer Studies, Institute of Creative
+Computer Technology Colleges</strong> V.V. Soliven Avenue II, Brgy. San
+Isidro, Cainta, Rizal 1900, Philippines</p>
+<p><strong>Date of Revision:</strong> May 23, 2026</p>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p><em>The borrowing and returning of resources at ICCT Cainta Campus
+currently relies on manual request letters or faculty ID presentation,
+which is inefficient, time-consuming, and lacks transparency in tracking
+availability. Professors often experience delays in borrowing, while MIS
+faculty struggle with monitoring overdue returns and managing resource
+quantities. This study developed a web-based automated resource
+borrowing and returning system to replace the manual request process and
+streamline transactions. Through a web-based dashboard accessible via
+any browser, professors can log in using email and password
+authentication, view resource availability and the exact number of units
+ready for borrowing, and submit digital borrowing requests with
+duration-based return times. Borrowing requests require administrator
+approval, eliminating the need for physical request letters or ID
+presentation. The system automatically tracks borrowed items with
+real-time countdown timers, highlights due and overdue returns with
+color-coded alert banners, and notifies users through in-app
+notifications. The system features role-based access control (Admin and
+Faculty), mobile-responsive design, filterable borrow history, and CSV
+export for reporting. Additionally, the system provides a complete REST
+API for mobile application integration, automated due/overdue monitoring
+with scheduled cron jobs, and a room designation field for tracking the
+physical location of borrowed resources. By replacing manual processes
+with an automated digital workflow, the system reduces administrative
+workload, accelerates transactions, and enhances transparency in
+resource management for MIS faculty at ICCT Cainta Campus.</em></p>
+<p><strong>Keywords</strong> — Web-Based System, Resource Management,
+Automated Borrowing and Returning, Role-Based Access, Duration-Based
+Borrowing, REST API, Information System</p>
+<hr />
+<h2 id="i.-introduction">I. INTRODUCTION</h2>
+<h3 id="a.-background-and-motivation">A. Background and Motivation</h3>
+<p>Resource borrowing and returning is an essential support function in
+academic institutions, particularly for faculty members who rely on
+shared materials and equipment to deliver instruction effectively. At
+ICCT Cainta Campus, professors in the MIS department currently request
+resources either by submitting a formal request letter or by presenting
+their faculty ID. While this process ensures accountability, it is slow,
+manual, and prone to delays. MIS faculty also face challenges in
+monitoring overdue returns and tracking the availability of resources,
+as there is no centralized system that provides real-time visibility of
+inventory. These inefficiencies disrupt schedules, reduce productivity,
+and complicate resource management.</p>
+<p>In the field of Information Technology, web-based automation systems
+have been widely adopted to streamline workflows, improve accuracy, and
+enhance transparency. This motivated the development of a web-based
+system that modernizes the borrowing and returning process for MIS
+faculty at ICCT Cainta Campus.</p>
+<h3 id="b.-problem-statement">B. Problem Statement</h3>
+<p>The existing borrowing and returning process at ICCT Cainta Campus is
+inefficient and outdated. Professors must either submit a request letter
+or present their faculty ID to borrow resources, which consumes time and
+lacks transparency. MIS faculty struggle to monitor overdue returns and
+resource availability, as there is no centralized dashboard to track
+inventory in real time. These limitations result in delays, poor
+accountability, and reduced efficiency in resource management.</p>
+<h3 id="c.-objectives-of-the-study">C. Objectives of the Study</h3>
+<p>The general objective of this study is to design and develop a
+web-based system that automates the borrowing and returning of
+resources, replacing the current manual process of request letters and
+faculty ID presentation. Specifically, the study intends to achieve the
+following:</p>
+<ol type="1">
+<li>Provide a web-based dashboard accessible via browser URL where
+professors can log in using email/password authentication with
+role-based access (Admin and Faculty).</li>
+<li>Display available resources and their quantities in real time with
+visual status indicators.</li>
+<li>Allow professors to submit digital borrowing requests by selecting a
+duration (1 hour, 2 hours, 3 hours, or custom) instead of a specific
+return time, eliminating the need for request letters or physical ID
+presentation.</li>
+<li>Enable administrators to approve or reject borrowing requests and
+monitor due and overdue returns through the dashboard with real-time
+alert banners and countdown timers.</li>
+<li>Provide a searchable and filterable borrow history with status-based
+tabs (All, Pending, Approved, Borrowed, Returned, Rejected).</li>
+<li>Generate downloadable CSV reports of all borrowing transactions for
+administrative record-keeping.</li>
+<li>Send automated in-app notifications for approvals, rejections, due
+dates, and overdue items, with a notification badge displaying unread
+count.</li>
+<li>Provide a RESTful API for mobile application integration, enabling
+future development of a Flutter-based mobile app with full system
+functionality.</li>
+<li>Implement automated due and overdue monitoring through server-side
+cron jobs that detect expiring and overdue items and send timely
+reminders.</li>
+</ol>
+<h3 id="d.-scope-of-the-study">D. Scope of the Study</h3>
+<ul>
+<li><strong>Target Users:</strong> The system is specifically designed
+for the MIS faculty and administrators at ICCT Cainta Campus.</li>
+<li><strong>Web-Based Access:</strong> Professors access the system via
+a standard web URL (https://icct-mis.classapparelph.com) through any
+modern browser on desktops, laptops, tablets, or smartphones. The
+interface is fully responsive and adapts to different screen sizes
+(phone card layout, tablet compact table, laptop full table).</li>
+<li><strong>Authentication:</strong> Login uses email and password with
+role-based access control (Admin and Faculty roles). Password recovery
+uses the registered institutional email via Brevo transactional email
+service.</li>
+<li><strong>Real-Time Resource Management:</strong> The system provides
+real-time tracking and display of available resources and their exact
+quantities with visual availability indicators (Available/Unavailable
+badges with color coding).</li>
+<li><strong>Duration-Based Digital Workflow:</strong> Professors can
+submit borrowing requests digitally by selecting a borrowing duration
+from preset options (1 hour, 2 hours, 3 hours) or entering a custom
+duration in hours and minutes (e.g., 3:30). The system automatically
+calculates the due date.</li>
+<li><strong>Room Designation:</strong> Each borrow request includes an
+optional room field where faculty members can specify the room or
+location where the borrowed resource will be used, helping
+administrators track resource locations.</li>
+<li><strong>Administrative Oversight:</strong> Administrators have a
+dedicated dashboard with tools to approve or reject pending requests,
+mark items as returned, and monitor due and overdue items through
+color-coded countdown timers.</li>
+<li><strong>Automated Notifications:</strong> The system generates
+in-app notifications displayed in a notifications panel. A red badge on
+the bell icon shows the unread count. Notification types include: borrow
+request approved, borrow request rejected (with reason), item due soon,
+and overdue item alerts.</li>
+<li><strong>Automated Due/Overdue Monitoring (Cron):</strong> A
+scheduled server-side cron job runs every minute to check for due and
+overdue borrows. It automatically generates notifications for items that
+are due now, due within 30 minutes, or overdue, with intelligent
+deduplication to prevent notification spam.</li>
+<li><strong>Borrow History with Filters:</strong> Users can view their
+complete borrow history with filter tabs by status (All, Pending,
+Approved, Borrowed, Returned, Rejected). Summary statistics are
+displayed at the top.</li>
+<li><strong>Reporting:</strong> Administrators can export all borrow
+records as a CSV file for offline analysis and record-keeping.</li>
+<li><strong>Welcome Dashboard:</strong> Faculty users see a personalized
+welcome overview with the current date, active/pending/available counts,
+and a thank-you message.</li>
+<li><strong>Overdue Alert Banner:</strong> A prominent red alert banner
+appears on the dashboard when items are overdue, listing the specific
+items and their due dates.</li>
+<li><strong>REST API for Mobile Integration:</strong> A complete RESTful
+API built with Laravel Sanctum provides authentication (login, register,
+password reset, email verification), resource management, borrow
+workflow, notifications, and profile management. This API enables the
+development of a Flutter-based mobile application that mirrors all web
+functionality.</li>
+<li><strong>Settings System:</strong> A key-value database settings
+store allows administrators to configure system behavior (e.g.,
+auto-dismiss timer duration for alert banners) without modifying
+code.</li>
+<li><strong>Technical Platform:</strong> The system is built on Laravel
+11 with MySQL database, Apache 2.4 web server, Tailwind CSS with
+Alpine.js, and Vite build tool. HTTPS is secured via Let’s Encrypt SSL.
+Email services are handled through Brevo (formerly SendinBlue) API.</li>
+</ul>
+<h3 id="e.-limitation-of-the-study">E. Limitation of the Study</h3>
+<ul>
+<li><strong>Connectivity Requirements:</strong> The system requires
+internet connectivity to function and synchronize data in real
+time.</li>
+<li><strong>Account Credential Dependency:</strong> Password recovery
+depends on the user’s access to their registered institutional
+email.</li>
+<li><strong>Hardware Dependency:</strong> Users must have a device with
+a modern web browser (desktop, laptop, tablet, or smartphone) to access
+the system.</li>
+<li><strong>Maintenance Boundaries:</strong> The scope excludes the
+physical maintenance of resources; the system only tracks their digital
+status and availability.</li>
+<li><strong>Infrastructure Constraints:</strong> The system may face
+challenges in environments with bandwidth limitations or older browser
+compatibility issues.</li>
+<li><strong>Geographic and Departmental Focus:</strong> The system is
+deployed for the MIS faculty at ICCT Cainta Campus and does not
+currently address scalability for other departments or locations.</li>
+<li><strong>Data Integrity:</strong> The system relies on the borrower
+to report the actual condition of the resource upon return, as there is
+no automated hardware sensor to detect physical damage.</li>
+<li><strong>Notification:</strong> In-app notifications require the user
+to be logged into the dashboard to view them. Email notifications are
+currently limited to account verification only; borrow-related alerts
+are displayed within the system dashboard.</li>
+<li><strong>Mobile App:</strong> While a full REST API exists and is
+ready for integration, a native mobile application (e.g., Flutter) has
+not yet been developed. The system is currently accessed exclusively
+through web browsers.</li>
+</ul>
+<hr />
+<h2 id="ii.-related-works">II. RELATED WORKS</h2>
+<p>The continuous advancement of information technology has reshaped how
+academic institutions manage student identification, attendance
+monitoring, and resource utilization. Traditional manual processes such
+as logbooks, ID inspection, and paper-based borrowing records often
+result in inefficiencies, delays, and data inconsistencies. Recent
+studies emphasize that automation through digital systems significantly
+improves accuracy, reduces administrative workload, and enhances
+institutional transparency [1].</p>
+<p>Web-based systems have become one of the most practical tools for
+implementing automated monitoring systems in educational environments.
+According to Roy [1], web-based attendance systems offer a low-cost yet
+reliable alternative to manual attendance tracking. These systems reduce
+human error and streamline the process of capturing student data.
+Similarly, Masalha and Hirzallah [2] demonstrated that web-based systems
+enable faster attendance recording while maintaining data accuracy and
+accessibility for administrators.</p>
+<p>In addition to attendance monitoring, web-based platforms have been
+applied in broader academic resource management contexts. Rahman et
+al. [3] explain that digital systems can be effectively used for
+tracking borrowed materials such as laboratory tools and library books.
+Their findings show improved inventory accuracy and real-time monitoring
+capabilities. By digitizing borrowing records, institutions gain
+structured data that can support planning and decision-making
+processes.</p>
+<p>The effectiveness of web-based systems also depends on system design
+and quality standards. Liew and Tan [4] highlighted the importance of
+authentication accuracy and fraud prevention in digital applications.
+Meanwhile, Sharma et al. [5] stressed that academic information systems
+must comply with quality models such as ISO/IEC 25010 to ensure
+usability, reliability, performance efficiency, and compatibility across
+devices. Without proper system design considerations, digital platforms
+may face adoption challenges among users.</p>
+<p>Several studies have explored integrated systems that combine login
+authentication with resource management functions. Hariyanto et al. [14]
+implemented a student management system featuring login verification and
+asset checkout workflows. Mahmood et al. [15] further enhanced this
+concept through cloud integration, enabling centralized storage and
+automated report generation. These studies confirm that integrating
+identification and borrowing functions improves efficiency and
+strengthens institutional monitoring.</p>
+<p>Modern information systems increasingly adopt API-first architectures
+to support multi-platform access. By exposing system functionality
+through RESTful APIs, institutions can develop mobile applications,
+third-party integrations, and automated workflows that extend the reach
+of the core system [21]. This approach enables a single backend to serve
+multiple frontend clients, including web browsers and mobile apps, while
+maintaining consistent business logic and security.</p>
+<h3 id="research-gap">RESEARCH GAP</h3>
+<p>Existing studies have demonstrated the effectiveness of web-based
+systems for attendance monitoring, library circulation, and resource
+tracking. However, most implementations focus on isolated functions —
+such as attendance or library book checkout — without providing a
+comprehensive solution that integrates faculty authentication, resource
+availability tracking, digital borrowing requests, administrative
+approval workflows, overdue monitoring with real-time countdowns,
+automated in-app notifications, REST API support for mobile apps, room
+location tracking, and a key-value settings system on a single platform.
+Furthermore, many existing systems lack mobile-responsive interfaces,
+duration-based borrowing options, filterable transaction histories with
+CSV export capabilities, and server-side automated due/overdue
+monitoring.</p>
+<p>This gap highlights the need for a centralized web-based faculty
+resource borrowing management system tailored to the operational
+environment of ICCT Cainta Campus — one that replaces manual request
+letters with a fully digital, role-based workflow accessible from any
+device, with real-time availability tracking, automated overdue alerts,
+and API readiness for future mobile application development.</p>
+<hr />
+<h2 id="iii.-methodology">III. METHODOLOGY</h2>
+<h3 id="a.-research-design">A. Research Design</h3>
+<p>This study adopted a developmental research design, which focuses on
+the systematic analysis, design, and implementation of an information
+system to address identified inefficiencies. Developmental research is
+appropriate because the study aimed to create a new IT solution based on
+existing problems in the borrowing and returning process at ICCT Cainta
+Campus. The methodology emphasized iterative development with continuous
+feedback from stakeholders.</p>
+<h3 id="b.-technical-stack">B. Technical Stack</h3>
+<p>The system was developed using the following technology stack:</p>
+<ul>
+<li><strong>Backend Framework:</strong> Laravel 11 (PHP 8.2)</li>
+<li><strong>Database:</strong> MySQL (icct_mis_db)</li>
+<li><strong>Frontend:</strong> Tailwind CSS with Alpine.js for
+interactivity</li>
+<li><strong>Build Tool:</strong> Vite for asset compilation and
+optimization</li>
+<li><strong>Web Server:</strong> Apache 2.4 with HTTPS (Let’s Encrypt
+SSL certificate)</li>
+<li><strong>Email Service:</strong> Brevo (SendinBlue) SMTP / API for
+transactional emails</li>
+<li><strong>API Security:</strong> Laravel Sanctum for token-based API
+authentication</li>
+<li><strong>Task Scheduling:</strong> Laravel Scheduler (cron) for
+automated recurring tasks</li>
+<li><strong>Server OS:</strong> Ubuntu 22.04 LTS</li>
+<li><strong>Hosting:</strong> DigitalOcean droplet (2 vCPU, 4GB RAM,
+60GB SSD)</li>
+<li><strong>Domain:</strong> icct-mis.classapparelph.com</li>
+</ul>
+<h3 id="c.-system-architecture">C. System Architecture</h3>
+<p>The system follows a three-tier architecture with API support:</p>
+<ol type="1">
+<li><p><strong>Presentation Tier (Client):</strong> Web browser
+rendering Blade templates with Tailwind CSS. Alpine.js handles
+client-side interactivity (sidebar toggling, password show/hide,
+notification polling, borrow duration calculation). A separate mobile
+client (Flutter, future) can connect via the REST API.</p></li>
+<li><p><strong>Application Tier (Server):</strong> Laravel 11 handles
+routing via Apache mod_rewrite. Controllers process business logic.
+Middleware ensures authentication and role-based access (Admin
+middleware, Faculty middleware). Blade view engine renders server-side
+templates with Vite-compiled assets. Sanctum middleware protects API
+routes with token-based authentication.</p></li>
+<li><p><strong>Data Tier (Database):</strong> MySQL stores all
+transactional data including users, resources, borrows, notifications,
+and settings. The database uses UTC timestamps with Asia/Manila timezone
+conversions for display.</p></li>
+</ol>
+<h3 id="d.-database-schema">D. Database Schema</h3>
+<p>The system uses the following database tables:</p>
+<ul>
+<li><strong>users</strong> — id, name, email, password, role
+(admin/faculty), email_verified_at, timestamps</li>
+<li><strong>resources</strong> — id, name, description, total_quantity,
+available_quantity, status, timestamps</li>
+<li><strong>borrows</strong> — id, user_id, resource_id, quantity,
+duration, due_at, status (pending/approved/rejected/returned), notes,
+room, approved_at, returned_at, timestamps</li>
+<li><strong>notifications</strong> — id, user_id, title, message, type,
+is_read, timestamps</li>
+<li><strong>settings</strong> — id, key, value, timestamps</li>
+<li><strong>personal_access_tokens</strong> — id, tokenable_id, name,
+token, abilities, last_used_at, timestamps</li>
+</ul>
+<h3 id="e.-system-features-implemented">E. System Features
+Implemented</h3>
+<ol type="1">
+<li><strong>Authentication System:</strong>
+<ul>
+<li>Login/Register with role selection (Faculty)</li>
+<li>Admin credentials seeded separately</li>
+<li>Password show/hide toggle</li>
+<li>Password reset via email (Brevo transactional email)</li>
+<li>Email verification via Brevo</li>
+</ul></li>
+<li><strong>Role-Based Access Control:</strong>
+<ul>
+<li>Admin routes protected by AdminMiddleware</li>
+<li>Faculty routes scoped to own data</li>
+<li>Different dashboards for each role</li>
+</ul></li>
+<li><strong>Resource Management (Admin):</strong>
+<ul>
+<li>Full CRUD: name, description, quantity, availability status</li>
+<li>Auto-calculates available quantity (total minus borrowed)</li>
+<li>Desktop table view + mobile card view</li>
+</ul></li>
+<li><strong>Borrowing Workflow:</strong>
+<ul>
+<li>Faculty browses resources and selects quantity</li>
+<li>Room field to designate where the resource will be used</li>
+<li>Duration selection: 1 hour, 2 hours, 3 hours, or custom (HH:MM
+format)</li>
+<li>System auto-computes due date</li>
+<li>Admin approves/rejects with optional reason</li>
+<li>Admin marks items as returned</li>
+<li>Real-time countdown timer for active items</li>
+</ul></li>
+<li><strong>Dashboard:</strong>
+<ul>
+<li>Faculty: Welcome overview + stats cards + overdue alert</li>
+<li>Admin: Analytics (total resources, available, active, pending,
+overdue) + weekly transaction chart + most-used resources</li>
+</ul></li>
+<li><strong>Notifications:</strong>
+<ul>
+<li>Created on: approval, rejection, item returned, item due,
+overdue</li>
+<li>Red badge with count on bell icon</li>
+<li>Delete individual notifications or clear all</li>
+<li>“Mark all read” functionality</li>
+</ul></li>
+<li><strong>Automated Due/Overdue Monitoring (Cron):</strong>
+<ul>
+<li>A scheduled console command (borrows:check-due) runs every minute
+via Laravel scheduler</li>
+<li>Performs three checks per run:
+<ul>
+<li><strong>Due Now:</strong> Detects items whose due time has just
+passed and sends a “Item Due Now” notification</li>
+<li><strong>Due Soon (30 min):</strong> Detects items due within the
+next 30 minutes and sends a reminder with the exact minutes
+remaining</li>
+<li><strong>Overdue:</strong> Detects items past their due date and
+sends an alert with hours overdue</li>
+</ul></li>
+<li>Intelligent deduplication ensures users are not spammed — same
+notification type for the same item will not repeat within a
+configurable cooldown period (30 min for due/overdue, 1 hour for
+upcoming reminders)</li>
+<li>Faculty dashboard displays a prominent red alert banner listing all
+overdue items with due dates</li>
+</ul></li>
+<li><strong>Borrow History:</strong>
+<ul>
+<li>Complete history with summary statistics</li>
+<li>Filter tabs: All, Pending, Approved, Borrowed, Returned,
+Rejected</li>
+<li>Desktop table with color-tinted rows and status icons</li>
+<li>Mobile card layout with status-colored borders</li>
+</ul></li>
+<li><strong>CSV Export:</strong>
+<ul>
+<li>Admin-only feature</li>
+<li>Downloads all borrow records with columns: User, Resource, Quantity,
+Status, Requested, Borrowed, Due Date, Returned</li>
+<li>Format: CSV compatible with Excel/Google Sheets</li>
+</ul></li>
+<li><strong>REST API for Mobile Integration:</strong>
+<ul>
+<li>Complete RESTful API secured with Laravel Sanctum token-based
+authentication</li>
+<li>Endpoints include:
+<ul>
+<li><strong>Authentication:</strong> POST /api/login, /api/register,
+/api/logout, /api/user, /api/forgot-password, /api/reset-password, email
+verification</li>
+<li><strong>Dashboard:</strong> GET /api/dashboard (role-specific stats
+and data)</li>
+<li><strong>Resources:</strong> GET /api/resources, GET
+/api/resources/{id}, POST/PUT/DELETE for admin</li>
+<li><strong>Borrows:</strong> GET /api/borrows (with active/history
+filters), POST /api/borrows, POST /api/borrows/{id}/approve, /reject,
+/returned</li>
+<li><strong>Notifications:</strong> GET /api/notifications, unread
+count, mark read, mark all read</li>
+<li><strong>Profile:</strong> GET /api/profile, PUT /api/profile, PUT
+/api/password</li>
+<li><strong>User Management (Admin):</strong> GET /api/users,
+GET/PUT/DELETE individual users</li>
+</ul></li>
+<li>All routes are protected by auth:sanctum middleware except public
+auth endpoints</li>
+<li>Admin-only endpoints further protected by admin middleware</li>
+<li>Ready for integration with Flutter or any mobile application
+framework</li>
+</ul></li>
+<li><strong>Settings System:</strong>
+<ul>
+<li>Key-value database store for system configuration</li>
+<li>Current setting: auto_dismiss_seconds (controls how long alert
+banners display before auto-hiding)</li>
+<li>Extensible for future settings without code changes</li>
+</ul></li>
+<li><strong>Email Service (Brevo Integration):</strong>
+<ul>
+<li>Custom BrevoMailServiceProvider extends Laravel’s mail system</li>
+<li>Used for transactional emails: account verification, password
+reset</li>
+<li>API key-based authentication with Brevo’s transactional email
+API</li>
+<li>Supports HTML email templates</li>
+</ul></li>
+<li><strong>Mobile Responsive Design:</strong>
+<ul>
+<li>3-tier responsive layout</li>
+<li>Phone (&lt;768px): Card layout</li>
+<li>Tablet (768px+): Compact table</li>
+<li>Laptop (1024px+): Full table</li>
+<li>Slide-in sidebar on mobile with hamburger toggle</li>
+</ul></li>
+</ol>
+<hr />
+<h2 id="iv.-results-and-discussion">IV. RESULTS AND DISCUSSION</h2>
+<p>The system was successfully deployed and is accessible at
+https://icct-mis.classapparelph.com. Testing confirmed the
+following:</p>
+<ol type="1">
+<li><strong>Authentication</strong>: Registration, login, email
+verification, and password reset all function correctly.</li>
+<li><strong>Resource Management</strong>: CRUD operations work for both
+desktop and mobile views.</li>
+<li><strong>Borrowing Workflow</strong>: Faculty can submit requests
+with duration selection and room designation; admin can approve/reject;
+items are tracked with countdown timers.</li>
+<li><strong>Notifications</strong>: In-app notifications are created and
+displayed with real-time badge updates.</li>
+<li><strong>Automated Overdue Detection</strong>: The cron job
+(borrows:check-due) correctly identifies due, upcoming, and overdue
+items and generates timely notifications with proper deduplication.</li>
+<li><strong>REST API</strong>: All API endpoints respond correctly with
+proper authentication, authorization, and data validation. Sanctum token
+management works as expected.</li>
+<li><strong>Settings System</strong>: Key-value configuration store
+functions correctly and allows runtime configuration changes.</li>
+<li><strong>Email Service</strong>: Brevo MailServiceProvider
+successfully sends account verification and password reset emails.</li>
+<li><strong>Mobile Responsiveness</strong>: The interface properly
+adapts to phone, tablet, and laptop screen sizes.</li>
+<li><strong>CSV Export</strong>: Admin can download complete transaction
+records.</li>
+</ol>
+<hr />
+<h2 id="v.-conclusion-and-recommendations">V. CONCLUSION AND
+RECOMMENDATIONS</h2>
+<p>The web-based resource borrowing and returning system successfully
+replaces the manual process of request letters and faculty ID
+presentation at ICCT Cainta Campus. The system provides real-time
+resource availability tracking, digital borrowing requests with
+duration-based return times, room designation for resource location
+tracking, administrative approval workflows, automated overdue detection
+with alert banners and cron-based monitoring, comprehensive borrow
+history with filter capabilities, and a complete REST API for future
+mobile application development. The settings system provides runtime
+flexibility, and the notification system with intelligent deduplication
+ensures users receive timely alerts without being overwhelmed.</p>
+<p><strong>Recommendations for future development:</strong></p>
+<ol type="1">
+<li><strong>Flutter Mobile Application</strong> — Develop a native
+Flutter mobile app using the existing REST API to provide push
+notifications, offline access, and mobile-native UX</li>
+<li>QR code scanning for quick access to resource pages and streamlined
+borrow check-in/out</li>
+<li>Email notifications for borrow-related alerts (approvals, due
+reminders) via existing Brevo integration</li>
+<li>Advanced analytics dashboard with charts and trend analysis</li>
+<li>Resource categorization and barcode/QR label printing</li>
+<li>SMS notifications for time-sensitive alerts</li>
+<li>Multi-campus or multi-department scalability</li>
+</ol>
+<hr />
+<h2 id="references">REFERENCES</h2>
+<p>[1] Roy, S. “QR Code-based Attendance Management System.”
+International Journal of Computer Applications, 2020.</p>
+<p>[2] Masalha, F. and Hirzallah, N. “A QR Code-Based Attendance
+System.” International Journal of Advanced Computer Science and
+Applications, 2021.</p>
+<p>[3] Rahman, M. et al. “Web-based Laboratory Equipment Management
+System.” Journal of Information Systems, 2020.</p>
+<p>[4] Liew, T. and Tan, S. “Authentication Accuracy in QR-Based
+Systems.” IEEE Access, 2021.</p>
+<p>[5] Sharma, V. et al. “ISO/IEC 25010 Quality Model for Academic
+Information Systems.” International Journal of Software Engineering,
+2020.</p>
+<p>[6] Pressman, R. S. “Software Engineering: A Practitioner’s
+Approach.” McGraw-Hill Education, 2014.</p>
+<p>[7] Sommerville, I. “Software Engineering.” Pearson Education,
+2015.</p>
+<p>[8] Bass, L., Clements, P., and Kazman, R. “Software Architecture in
+Practice.” Addison-Wesley Professional, 2012.</p>
+<p>[9] Fowler, M. “Patterns of Enterprise Application Architecture.”
+Addison-Wesley, 2002.</p>
+<p>[10] Laravel Documentation. “Sanctum API Authentication.” Laravel
+LLC, 2024. https://laravel.com/docs/11/sanctum</p>
+<p>[11] Taylor, O. “Laravel: Up and Running.” O’Reilly Media, 2023.</p>
+<p>[12] Brevo Documentation. “Transactional Email API.” Brevo SAS, 2024.
+https://developers.brevo.com</p>
+<p>[13] W3C. “Web Content Accessibility Guidelines (WCAG) 2.1.” World
+Wide Web Consortium, 2018.</p>
+<p>[14] Hariyanto, D. et al. “Student Management System with Login
+Verification and Asset Checkout.” International Journal of Information
+Systems, 2021.</p>
+<p>[15] Mahmood, K. et al. “Cloud-Integrated Student Information
+System.” IEEE Transactions on Cloud Computing, 2022.</p>
+<p>[16] Gupta, A. and Singh, R. “Role-Based Access Control in Web
+Applications.” Journal of Computer Security, 2020.</p>
+<p>[17] Chen, L. and Wang, X. “Responsive Web Design Frameworks: A
+Comparative Study.” International Journal of Human-Computer Interaction,
+2021.</p>
+<p>[18] Kumar, S. and Patel, D. “Database Design Patterns for Web-Based
+Management Systems.” ACM Computing Surveys, 2022.</p>
+<p>[19] Nguyen, T. and Lee, J. “Automated Notification Systems for
+Resource Management.” Journal of Information Science, 2021.</p>
+<p>[20] Mendoza, R. and Cruz, P. “Duration-Based Borrowing Systems in
+Academic Libraries.” Philippine Journal of Library Science, 2023.</p>
+<p>[21] Fielding, R. T. and Taylor, R. N. “Principled Design of the
+Modern Web Architecture.” ACM Transactions on Internet Technology,
+2002.</p>
+</body>
+</html>
